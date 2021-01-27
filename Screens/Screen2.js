@@ -10,11 +10,10 @@ import {
     Button,
 } from 'react-native';
 import { AccordionList } from "accordion-collapse-react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const DetailScreen = ({ navigation, route }) => {
-
+// Information List
     const information = {
         list: [
             {
@@ -40,6 +39,7 @@ const DetailScreen = ({ navigation, route }) => {
 
         ],
     };
+    // Function to render head
     const head = (item) => {
         return (
             <View style={styles.head}>
@@ -47,7 +47,7 @@ const DetailScreen = ({ navigation, route }) => {
             </View>
         );
     };
-
+    // Function to render Body
     const body = (item) => {
         return (
             <View style={styles.body}>
@@ -55,18 +55,16 @@ const DetailScreen = ({ navigation, route }) => {
             </View>
         );
     };
-
-    const another = async() => {
-        navigation.navigate("Welcome");
-    };
-
+    // Checking if the movie exists
     if (route.params.data.Title){
         return (
             <View style={styles.container} >
+                {/* Rendering the Poster */}
                 <Image source={{ uri: route.params.data.Poster }}
                     style={styles.poster} />
 
                 <View style={styles.info}>
+                    {/* Rendering important info about the movie */}
                     <Text style={styles.title}>{route.params.data.Title}</Text>
                     <Text style={styles.font}>{route.params.data.Year}</Text>
                     <Text style={styles.font}>Type: {route.params.data.Type}</Text>
@@ -88,6 +86,7 @@ const DetailScreen = ({ navigation, route }) => {
             </View>
         );
     }
+    // Rendering Not Found if the movie does not exist
     else {
         return (
             <View style={styles.container}>
@@ -98,6 +97,7 @@ const DetailScreen = ({ navigation, route }) => {
     }
 };
 
+// Stying for the View
 const styles = StyleSheet.create({
     container: {
         flex: 1,

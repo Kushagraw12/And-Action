@@ -14,22 +14,28 @@ const WelcomeScreen = ({navigation}) => {
 
   const searchFunction = async () => {
     try {
+      // Using OMDB API
       let response = await fetch(
         `https://www.omdbapi.com/?t=${text}&apikey=4235db46`,
       );
+      // Waiting for response from the API
       let json = await response.json();
+      // Navigating to the Screen 2
       navigation.navigate('Detail', {data: json});
       console.log(json);
     } catch (error) {
+      // Showing the errors
       console.error(error);
     }
   };
   return (
     <View style={styles.container}>
+      {/* LOGO */}
       <Image style={styles.logo} source={require('../assets/logoac.png')} />
       <Text style={styles.head}>Welcome!</Text>
 
         <Text style={styles.textt}>Search for a movie or webseries to get info about it!</Text>
+        {/* SearchBar */}
         <TextInput
           style={styles.searchBar}
           placeholder="Type here!"
@@ -49,6 +55,7 @@ const WelcomeScreen = ({navigation}) => {
   );
 };
 
+// Styling for the View
 const styles = StyleSheet.create({
   container: {
     flex: 1,

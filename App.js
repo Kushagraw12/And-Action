@@ -14,12 +14,14 @@ import DetailScreen from './Screens/Screen2';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+// Create a Stack Navigatior
 const Stack = createStackNavigator();
 
 
 
 const App = () => {
   return (
+    // Routing for the app
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
