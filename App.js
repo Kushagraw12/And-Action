@@ -1,21 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
+/* eslint-disable prettier/prettier */
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  * @flow strict-local
+//  */
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import WelcomeScreen from './Screens/Screen1';
+import DetailScreen from './Screens/Screen2';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
